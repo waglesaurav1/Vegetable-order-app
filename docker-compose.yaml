@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  vegetable-web:
+    build: .
+    image: vegetable:v1.0.0
+    container_name: vegetable-app
+    ports: 
+      - "3000:3000"
+    
+
+    environment:
+      - MONGO_URI= mongodb://mongodb:27017/vegetable_order_app
+      
+    depends_on:
+      - mongodb
+  
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo-db
+    ports: 
+      - "27017:27017"
